@@ -4,8 +4,6 @@ import os
 app = Flask(__name__)
 
 BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "music")
-
-# Ensure music folder exists
 os.makedirs(BASE_DIR, exist_ok=True)
 
 @app.route('/')
@@ -16,8 +14,7 @@ def index():
 @app.route('/station/<station_name>')
 def station(station_name):
     station_folder = os.path.join(BASE_DIR, station_name)
-    if not os.path.exists(station_folder):
-        os.makedirs(station_folder)
+    os.makedirs(station_folder, exist_ok=True)
     tracks = os.listdir(station_folder)
     return render_template('station.html', station=station_name, tracks=tracks)
 
@@ -39,4 +36,3 @@ def music_file(station_name, filename):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
-
