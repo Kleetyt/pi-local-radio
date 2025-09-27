@@ -29,5 +29,5 @@ A **Raspberry Pi–friendly local radio station** where users can create customi
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/pi-local-radio.git
+git clone https://github.com/Kleetyt/pi-local-radio.git
 cd pi-local-radio
