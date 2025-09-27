@@ -1,1 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pi Local Radio</title>
+</head>
+<body>
+    <h1>Pi Local Radio</h1>
+    <h2>Stations:</h2>
+    <ul>
+        {% for station in stations %}
+        <li><a href="{{ url_for('station', station_name=station) }}">{{ station }}</a></li>
+        {% endfor %}
+    </ul>
+    <h2>Create a New Station:</h2>
+    <form action="{{ url_for('station', station_name='') }}" method="get">
+        <input type="text" name="station_name" placeholder="Station Name">
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>
 
