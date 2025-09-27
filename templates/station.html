@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ station }} - Pi Local Radio</title>
+</head>
+<body>
+    <h1>Station: {{ station }}</h1>
+    <a href="{{ url_for('index') }}">Back to Stations</a>
+
+    <h2>Upload Track</h2>
+    <form action="{{ url_for('upload', station_name=station) }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".mp3,.wav" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <h2>Playlist</h2>
+    <ul id="playlist">
+        {% for track in tracks %}
+        <li data-src="{{ url_for('music_file', station_name=station, filename=track) }}">{{ track }}</li>
+        {% endfor %}
+    </ul>
+
+    <audio id="player" controls autoplay></audio>
+
+    <script>
+        const player = document.getElementById('player');
+        const playlist = Array.from(document.querySelectorAll('#playlist li'));
+        let current = 0;
+
+        function playTrack(index) {
+            if(playlist.length === 0) return;
+            current = index % playlist.length;
+            player.src = playlist[current].dataset.src;
+            player.play();
+        }
+
+        player.addEventListener('ended', () => {
+            playTrack(current + 1);
+        });
+
+        playlist.forEach((li, index) => {
+            li.addEventListener('click', () => playTrack(index));
+        });
+
+        playTrack(0);
+    </script>
+</body>
+</html>
