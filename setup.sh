@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Update system
+# Update the system
 sudo apt update && sudo apt upgrade -y
 
 # Install Python3 and pip
@@ -13,4 +13,3 @@ pip3 install Flask
 mkdir -p "$(dirname "$0")/music"
 
 echo "Setup complete. You can start the server with: python3 app.py"
-
