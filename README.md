@@ -2,9 +2,6 @@
 
 A **Raspberry Pi–friendly local radio station** where users can create customizable stations, upload their own music, and listen in a browser. Designed for **localhost use**, no extra hardware required.  
 
-![Pi Local Radio](https://user-images.githubusercontent.com/yourusername/pi-local-radio/demo.png)  
-*(Optional: add a screenshot of your app)*
-
 ---
 
 ## Features
